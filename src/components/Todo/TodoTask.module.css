@@ -1,0 +1,35 @@
+.todo-task{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.todo-task input[type='checkbox']{
+    border: 2px solid #405189;
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 0px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.lastest-item{
+    border-bottom: 1px solid #F3F3F3;
+}
+
+.todo-task label{
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.todo-task span{
+    margin-left: auto;
+    width: 25px;
+    height: auto;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    color: #405189;
+}
