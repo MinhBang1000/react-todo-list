@@ -11,16 +11,23 @@ export const reducer = (state, action) => {
         case constraints.ADD_TODO:
             return {
                 ...state,
-                todos: [...state.todos, {
-                    todoId: Math.random().toString(36).substr(2, 9),
-                    todoName: state.todoName
-                }],
+                todos: [...state.todos, action.payload],
                 todoName: ""
             }
         case constraints.DELETE_TODO:
             return {
                 ...state,
-                todos: [...state.todos.filter((todo) => (todo.todoId !== action.payload))]
+                todos: [...state.todos.filter((todo) => (todo.id !== action.payload))]
+            }
+        case constraints.ADD_LIST_TODO:
+            return {
+                ...state,
+                todos: [...action.payload]
+            }
+        case constraints.REMOVE_ALL_TODO:
+            return {
+                ...state,
+                todos: []
             }
         default: 
             throw new Error("Invalid action!")

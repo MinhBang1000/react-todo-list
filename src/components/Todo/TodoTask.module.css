@@ -22,6 +22,7 @@
 .todo-task label{
     flex-grow: 1;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .todo-task span{

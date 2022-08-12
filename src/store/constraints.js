@@ -21,9 +21,10 @@ export const setTodoDescribe = (payload) => {
     }
 }
 export const ADD_TODO = "add_todo"
-export const addTodo = () => {
+export const addTodo = (payload) => {
     return {
-        type: ADD_TODO
+        type: ADD_TODO,
+        payload
     }
 }
 
@@ -32,5 +33,20 @@ export const deleteTodo = (payload) => {
     return {
         type: DELETE_TODO,
         payload
+    }
+}
+
+export const ADD_LIST_TODO = "add_list_todo"
+export const addListTodo = (payload) => {
+    return {
+        type: ADD_LIST_TODO,
+        payload
+    }
+}
+
+export const REMOVE_ALL_TODO = "remove_all_todo"
+export const removeAllTodo = (payload) => {
+    return {
+        type: REMOVE_ALL_TODO
     }
 }

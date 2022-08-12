@@ -13,7 +13,7 @@ const TodoList = () => {
     return (
         <>
             { todos && todos.map((task,index) => {
-                return <TodoTask key={task.todoId} task={task} lastest={(index+1) === todos.length} />
+                return <TodoTask key={task.id} task={task} lastest={(index+1) === todos.length} />
             })}
         </>
     )

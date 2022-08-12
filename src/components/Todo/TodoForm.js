@@ -2,6 +2,8 @@ import React, { useRef } from "react"
 import { useStore } from "../../store/hooks"
 import * as constraints from "../../store/constraints"
 import classes from "./TodoForm.module.css"
+import axios from "axios"
+import { BASE_URL } from "../../store/base-url"
 
 const TodoForm = () => {
 
@@ -19,7 +21,17 @@ const TodoForm = () => {
             alert("A todo task name should not be emtpy !")
             return;
         }
-        dispatch(constraints.addTodo())
+        const data = {
+            name: todoName
+        }
+        axios.post(`${BASE_URL}/tasks/`,data)
+        .then((response) => {
+            const data = response.data
+            dispatch(constraints.addTodo(data))
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        })
 
     }
 
@@ -37,12 +49,11 @@ const TodoForm = () => {
                 <button
                     type="submit"
                 >
-                    Save Task
+                    Add
                 </button>
             </div>
         </form>
     )
-
 }
 
 export default TodoForm
