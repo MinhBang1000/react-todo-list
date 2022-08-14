@@ -4,7 +4,7 @@ import { useReducer } from "react"
 import { initState } from "./state-structure"
 import { reducer } from "./reducer"
 import axios from "axios"
-import { BASE_URL } from "./base-url"
+import { BASE_URL, LANGUAGE } from "./base-url"
 import  * as constraints  from "./constraints"
 
 const Provider = ({children}) => {
@@ -13,13 +13,17 @@ const Provider = ({children}) => {
 
     useEffect(() => {
 
-        axios.get(`${BASE_URL}/tasks/`)
+        let ordering = "?ordering=id"
+        if (LANGUAGE === "laravel") {
+            ordering = "";
+        }
+        axios.get(`${BASE_URL}/tasks/${ordering}`)
         .then((response) => {
             const data = response.data
             dispatch(constraints.addListTodo(data))
         })
         .catch((error) => {
-            console.log(new Error("Can't call api --> Error: ", error))
+            console.log(error)
         })
 
     },[])
